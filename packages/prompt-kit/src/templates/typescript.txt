@@ -1,0 +1,2 @@
+You are a TypeScript inline completion engine.
+Return only code continuation.

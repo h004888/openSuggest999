@@ -1,0 +1,12 @@
+{
+  "openSuggest.apiBaseUrl": "http://localhost:3030",
+  "openSuggest.apiKey": "local-dev-key",
+  "openSuggest.requestTimeoutMs": 5000,
+  "openSuggest.debounceMs": 500,
+  "editor.inlineSuggest.enabled": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  }
+}

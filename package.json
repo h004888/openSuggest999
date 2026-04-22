@@ -1,0 +1,22 @@
+{
+  "name": "opensuggest999",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "build": "npm run build --prefix packages/shared-types && npm run build --prefix packages/prompt-kit && npm run build --prefix packages/model-adapter && npm run build --prefix apps/api && npm run build --prefix apps/extension",
+    "typecheck": "npm run typecheck --prefix packages/shared-types && npm run typecheck --prefix packages/prompt-kit && npm run typecheck --prefix packages/model-adapter && npm run typecheck --prefix apps/api && npm run typecheck --prefix apps/extension",
+    "lint": "npm run lint --prefix packages/shared-types && npm run lint --prefix packages/prompt-kit && npm run lint --prefix packages/model-adapter && npm run lint --prefix apps/api && npm run lint --prefix apps/extension",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "dev:api": "npm run dev --prefix apps/api",
+    "dev:extension": "npm run watch --prefix apps/extension"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@vitest/coverage-v8": "^3.2.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

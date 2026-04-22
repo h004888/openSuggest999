@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "mmx-cli": {
+      "source": "MiniMax-AI/cli",
+      "sourceType": "github",
+      "computedHash": "e6851e6536a2da960273c3292378f32c511102812ec346074bc4429564f92d71"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{"level":30,"time":1776665138199,"pid":3060,"hostname":"DESKTOP-NGO3QM3","msg":"Server listening at http://127.0.0.1:3030"}
+{"level":30,"time":1776665138199,"pid":3060,"hostname":"DESKTOP-NGO3QM3","msg":"Server listening at http://192.168.4.93:3030"}
+{"level":30,"time":1776665138199,"pid":3060,"hostname":"DESKTOP-NGO3QM3","msg":"Server listening at http://172.25.160.1:3030"}
+{"level":30,"time":1776665141329,"pid":3060,"hostname":"DESKTOP-NGO3QM3","reqId":"req-1","req":{"method":"POST","url":"/v1/completions/inline","host":"localhost:3030","remoteAddress":"127.0.0.1","remotePort":50337},"msg":"incoming request"}
+{"type":"completion","requestId":"uat-req-002","language":"typescript","filePath":"src/main.ts","latencyMs":7516,"model":"MiniMax-M2.7","cached":false,"suggestionLength":7}
+{"level":30,"time":1776665148856,"pid":3060,"hostname":"DESKTOP-NGO3QM3","reqId":"req-1","res":{"statusCode":200},"responseTime":7525.883400000166,"msg":"request completed"}

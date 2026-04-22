@@ -1,0 +1,60 @@
+{
+  "name": "@opensuggest/extension",
+  "version": "0.1.0",
+  "private": true,
+  "displayName": "OpenSuggest",
+  "publisher": "opensuggest",
+  "description": "OpenSuggest inline completion extension",
+  "main": "./out/extension.js",
+  "type": "commonjs",
+  "categories": [
+    "Programming Languages",
+    "Machine Learning"
+  ],
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onLanguage:*"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "OpenSuggest",
+      "properties": {
+        "openSuggest.apiBaseUrl": {
+          "type": "string",
+          "default": "http://localhost:3030",
+          "description": "Completion API base URL"
+        },
+        "openSuggest.apiKey": {
+          "type": "string",
+          "default": "local-dev-key",
+          "description": "Optional API key for completion API"
+        },
+        "openSuggest.requestTimeoutMs": {
+          "type": "number",
+          "default": 5000,
+          "description": "Request timeout in milliseconds"
+        },
+        "openSuggest.debounceMs": {
+          "type": "number",
+          "default": 500,
+          "description": "Minimum delay between completion requests"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "watch": "tsc -p tsconfig.json --watch",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.90.0"
+  },
+  "dependencies": {
+    "opensuggest999": "file:../.."
+  }
+}
