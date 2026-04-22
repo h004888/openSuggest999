@@ -94,7 +94,7 @@ export class CompletionService {
     const modelResult = await this.options.adapter.complete({
       systemPrompt: prompt.systemPrompt,
       userPrompt: prompt.userPrompt,
-      maxTokens: 48,
+      maxTokens: 800,
       temperature: 0.1,
       requestId: request.requestId
     });

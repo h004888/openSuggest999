@@ -106,7 +106,7 @@ describe("CompletionService", () => {
 
       expect(mockAdapter.complete).toHaveBeenCalledWith(
         expect.objectContaining({
-          maxTokens: 48,
+          maxTokens: 800,
           temperature: 0.1
         })
       );

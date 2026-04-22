@@ -73,6 +73,7 @@ export class OpenAIAdapter implements CompletionModelAdapter {
       model: this.model,
       temperature: input.temperature,
       max_tokens: input.maxTokens,
+      stream: true,
       messages: [
         { role: "system", content: input.systemPrompt },
         { role: "user", content: input.userPrompt }
@@ -83,7 +84,7 @@ export class OpenAIAdapter implements CompletionModelAdapter {
       Object.assign(requestBody, this.extraBody);
     }
 
-    const response = (await this.client.chat.completions.create(
+    const stream = await this.client.chat.completions.create(
       requestBody as any,
       input.requestId
         ? {
@@ -92,15 +93,38 @@ export class OpenAIAdapter implements CompletionModelAdapter {
             }
           }
         : undefined
-    )) as OpenAIChatCompletionResponse;
+    );
 
-    const first = response.choices?.[0];
-    const text = extractMessageText(first?.message?.content);
+    let fullContent = "";
+    let fullReasoning = "";
+    let stopReason: string | undefined;
+    let model: string | undefined;
+
+    for await (const chunk of stream) {
+      const delta = chunk.choices?.[0]?.delta;
+
+      if (delta?.content !== undefined) {
+        fullContent += delta.content;
+      }
+
+      // Handle reasoning details if present (MiniMax-specific)
+      if ((delta as any)?.reasoning_details?.content !== undefined) {
+        fullReasoning += (delta as any).reasoning_details.content;
+      }
+
+      if (chunk.choices?.[0]?.finish_reason) {
+        stopReason = chunk.choices[0].finish_reason;
+      }
+
+      if (chunk.model) {
+        model = chunk.model;
+      }
+    }
 
     return {
-      suggestion: text,
-      model: response.model ?? this.model,
-      stopReason: first?.finish_reason
+      suggestion: fullContent,
+      model: model ?? this.model,
+      stopReason
     };
   }
 }
